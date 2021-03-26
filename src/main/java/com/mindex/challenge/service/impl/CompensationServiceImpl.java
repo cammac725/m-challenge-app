@@ -12,11 +12,23 @@ public class CompensationServiceImpl implements CompensationService {
 
     @Override
     public Compensation create(Compensation compensation) {
-        return null;
+        Compensation newCompensation = new Compensation();
+
+        newCompensation.setEmployee(compensation.getEmployee());
+        newCompensation.setSalary(compensation.getSalary());
+        newCompensation.setEmployee(compensation.getEffectiveDate());
+
+        return compensationRepository.save(compensation);
     }
 
     @Override
     public Compensation read(String id) {
-        return null;
+        Compensation compensation = compensationRepository.findByEmployee(id);
+
+        if (compensation == null) {
+            throw new RuntimeException("Invalid employeeId: " + id);
+        }
+
+        return compensation;
     }
 }
