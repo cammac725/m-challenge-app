@@ -4,7 +4,9 @@ public class ReportingStructure {
     private String employee;
     private int numberOfReports;
 
-    public ReportingStructure() {
+    public ReportingStructure(String employee, int numberOfReports) {
+        this.employee = employee;
+        this.numberOfReports = numberOfReports;
     }
 
     public String getEmployee() {
@@ -15,8 +17,8 @@ public class ReportingStructure {
         this.employee = employee;
     }
 
-    public int getNumberOfReports() {
-        return numberOfReports;
+    public int getNumberOfReports(Employee employee) {
+        return employee.getDirectReports().size();
     }
 
     public void setNumberOfReports(int numberOfReports) {
